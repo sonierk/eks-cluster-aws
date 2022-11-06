@@ -30,3 +30,12 @@ https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html
 Note, this tool was developed by weaveworks.io and adopted by the AWS EKS community
 https://github.com/weaveworks/eksctl
 https://eksctl.io/
+=================
+1. Cluster Creation.
+eksctl create cluster
+
+2. List cluster:
+eksctl get cluster 
+
+3. Delete cluster:
+eksctl delete cluster --name <cluster-name>
