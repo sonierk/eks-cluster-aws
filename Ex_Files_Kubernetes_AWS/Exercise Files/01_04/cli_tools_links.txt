@@ -39,3 +39,17 @@ eksctl get cluster
 
 3. Delete cluster:
 eksctl delete cluster --name <cluster-name>
+
+4. Add node group:
+eksctl create nodegroup --node-type m5.large --cluster <cluster-name> --name <nodegroup-name> --node-ami-family Bottlerocket
+
+5. list nodegroup:
+eks get nodegroups --cluster <cluster-name>
+
+6. delete node group
+eksctl delete nodegroup --cluster <cluster-name> <nodegroup-name>
+
+7. Creating scaling working pools:
+eksctl create nodegroup --node-type m5.large --name <nodegroup-name > --cluster <cluster-name> --asg-access --nodes-min 1 --nodes-max 2
+
+Got to the autoscaling group created above and add policy via the cloudwatch metrics(Avg 70% CPU)
