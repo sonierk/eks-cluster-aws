@@ -32,7 +32,8 @@ https://github.com/weaveworks/eksctl
 https://eksctl.io/
 =================
 1. Cluster Creation.
-eksctl create cluster
+#eksctl create cluster
+#eksctl create cluster --name eks-prod --region us-east-1 --nodegroup-name standard-workers --node-type t3.small --managed
 
 2. List cluster:
 eksctl get cluster 
@@ -50,6 +51,9 @@ eks get nodegroups --cluster <cluster-name>
 eksctl delete nodegroup --cluster <cluster-name> <nodegroup-name>
 
 7. Creating scaling working pools:
-eksctl create nodegroup --node-type m5.large --name <nodegroup-name > --cluster <cluster-name> --asg-access --nodes-min 1 --nodes-max 2
+eksctl create nodegroup --node-type t3.small --name <nodegroup-name > --cluster <cluster-name> --asg-access --nodes-min 1 --nodes-max 2
 
 Got to the autoscaling group created above and add policy via the cloudwatch metrics(Avg 70% CPU)
+
+8. configure ./kube/config with eksctl command to access the k8s cluster:
+eksctl utils write-kubeconfig --cluster <cluster-name> 
